@@ -21,7 +21,8 @@ public class LogAnalyze {
     }
 
     public void sampleApiKey() {
-        
+        String sampledApiKey = StringUtils.substringBetween(string[1], "apikey=", "&");
+        apiKey.put(sampledApiKey, apiKey.getOrDefault(sampledApiKey, 0) + 1);
     }
 
     public void sampleStateCode() {
@@ -42,6 +43,9 @@ public class LogAnalyze {
 
     public void Test() {
         stateCode.forEach((key, value) -> {
+            System.out.println(key + " : " + value);
+        });
+        apiKey.forEach((key, value) -> {
             System.out.println(key + " : " + value);
         });
     }

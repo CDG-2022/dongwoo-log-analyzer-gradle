@@ -14,6 +14,7 @@ public class Main {
             while((br.readLine()) != null){
                 logAnalyze.divide(br);
                 logAnalyze.sampleStateCode();
+                logAnalyze.sampleApiKey();
             }
         } catch (FileNotFoundException e){
             System.out.println("파일을 찾지 못했습니다");
