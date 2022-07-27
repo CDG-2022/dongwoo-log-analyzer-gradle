@@ -15,6 +15,8 @@ public class Main {
                 logAnalyze.divide(br);
                 logAnalyze.sampleStateCode();
                 logAnalyze.sampleApiKey();
+                logAnalyze.sampleServiceId();
+                logAnalyze.sampleBrowser();
             }
         } catch (FileNotFoundException e){
             System.out.println("파일을 찾지 못했습니다");

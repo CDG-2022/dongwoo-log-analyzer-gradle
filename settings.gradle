@@ -1,2 +1,3 @@
 rootProject.name = 'dongwoo-log-analyzer-gradle'
+include 'core1'
 
