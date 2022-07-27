@@ -28,7 +28,7 @@ public class LogAnalyze {
         string = substringsBetween(log.readLine(), "[", "]");
 //        string  = substringBetween(log.readLine(), "[", "]");
     }
-
+        
     public void sampleApiKey() {
         String sampledApiKey = substringBetween(string[1], "apikey=", "&");
         apiKey.put(sampledApiKey, apiKey.getOrDefault(sampledApiKey, 0) + 1);
