@@ -1,15 +1,13 @@
 
+import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import static org.apache.commons.lang3.StringUtils.substringBetween;
 import static org.apache.commons.lang3.StringUtils.substringsBetween;
-
 
 public class LogAnalyze {
 
@@ -22,11 +20,9 @@ public class LogAnalyze {
     private String [] string;
 
     public void divide(BufferedReader log) throws IOException {
-
-        List<String> list = new ArrayList<>();
-        Integer size = list.stream().filter(item -> item.stateCode.equals("200")).size();
+//        List<DividedLog> list = new ArrayList<>();
+//        Integer size = list.stream().filter(item -> item.stateCode.equals("200")).size();
         string = substringsBetween(log.readLine(), "[", "]");
-//        string  = substringBetween(log.readLine(), "[", "]");
     }
         
     public void sampleApiKey() {
@@ -38,14 +34,14 @@ public class LogAnalyze {
         stateCode.put(string[0], stateCode.getOrDefault(string[0], 0) + 1);
     }
 
-
     public void sampleServiceId() {
         String sampledServiceId = substringBetween(string[1], "search/", "?");
         serviceId.put(sampledServiceId, serviceId.getOrDefault(sampledServiceId, 0) + 1);
     }
 
     public void sampleTime() {
-
+        Time.put(string[3].substring(0, string[3].length()-3),
+                Time.getOrDefault(string[3].substring(0, string[3].length()-3), 0) + 1);
     }
 
     public void sampleBrowser() {
@@ -68,6 +64,14 @@ public class LogAnalyze {
         browser.forEach((key, value) -> {
             System.out.println(key + " : " + value);
         });
+        System.out.println();
+        Time.forEach((key, value) -> {
+            System.out.println(key + " : " + value);
+        });
     }
 
+    public void PrintResult() throws IOException {
+        PrintMaxCall printMaxCall = new PrintMaxCall();
+        printMaxCall.printMaxCall(apiKey);
+    }
 }

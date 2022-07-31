@@ -7,6 +7,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         LogAnalyze logAnalyze = new LogAnalyze();
+        PrintMaxCall printMaxCall = new PrintMaxCall();
 
         try {
             FileReader fr = new FileReader("C://input.log");
@@ -17,10 +18,12 @@ public class Main {
                 logAnalyze.sampleApiKey();
                 logAnalyze.sampleServiceId();
                 logAnalyze.sampleBrowser();
+                logAnalyze.sampleTime();
             }
         } catch (FileNotFoundException e){
             System.out.println("파일을 찾지 못했습니다");
         }
-        logAnalyze.Test();
+        logAnalyze.PrintResult();
+//        logAnalyze.Test();
     }
 }
