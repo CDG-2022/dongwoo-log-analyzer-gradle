@@ -17,6 +17,12 @@ public class LogAnalyze {
     private HashMap<String, Integer> Time = new HashMap<>();
     private HashMap<String, Integer> browser = new HashMap<>();
 
+    private HashMap<String, Integer> resultApiKey = new HashMap<>();
+    private HashMap<String, Integer> resultStateCode = new HashMap<>();
+    private HashMap<String, Integer> resultServiceId = new HashMap<>();
+    private HashMap<String, Integer> resultTime = new HashMap<>();
+    private HashMap<String, Integer> resultBrowser = new HashMap<>();
+
     private String [] string;
 
     public void divide(BufferedReader log) throws IOException {
