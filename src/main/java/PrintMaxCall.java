@@ -19,6 +19,8 @@ public class PrintMaxCall implements Print{
         }
         fileWriter.write("최다호출 APIKEY\n");
         fileWriter.write(listApiKey.get(0) + " " +  map.get(listApiKey.get(0)) + "회");
+        fileWriter.flush();
+        fileWriter.close();
     }
 
 }

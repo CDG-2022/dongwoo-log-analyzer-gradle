@@ -1,8 +1,6 @@
-
-import lombok.Data;
-import org.apache.commons.lang3.StringUtils;
-
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
@@ -17,11 +15,11 @@ public class LogAnalyze {
     private HashMap<String, Integer> Time = new HashMap<>();
     private HashMap<String, Integer> browser = new HashMap<>();
 
-    private HashMap<String, Integer> resultApiKey = new HashMap<>();
-    private HashMap<String, Integer> resultStateCode = new HashMap<>();
-    private HashMap<String, Integer> resultServiceId = new HashMap<>();
-    private HashMap<String, Integer> resultTime = new HashMap<>();
-    private HashMap<String, Integer> resultBrowser = new HashMap<>();
+    private ArrayList<String> resultApiKey = new ArrayList<>();
+    private ArrayList<String> resultStateCode = new ArrayList<>();
+    private ArrayList<String> resultServiceId = new ArrayList<>();
+    private ArrayList<String> resultTime = new ArrayList<>();
+    private ArrayList<String> resultBrowser = new ArrayList<>();
 
     private String [] string;
 
@@ -77,7 +75,36 @@ public class LogAnalyze {
     }
 
     public void PrintResult() throws IOException {
-        PrintMaxCall printMaxCall = new PrintMaxCall();
-        printMaxCall.printMaxCall(apiKey);
+        ArrayList<String> listApiKey = new ArrayList<>(apiKey.keySet());
+        listApiKey.sort((o1, o2) -> apiKey.get(o2).compareTo(apiKey.get(o1)));
+
+        File file = new File("C://output.log");
+        FileWriter fileWriter = new FileWriter(file);
+        if(!file.exists()) {
+            file.createNewFile();
+        }
+        fileWriter.write("최다호출 APIKEY\n");
+        fileWriter.write(listApiKey.get(0) + " " +  apiKey.get(listApiKey.get(0)) + "회\n");
+        fileWriter.flush();
+
+        fileWriter.write("상태코드 별 횟수\n");
+        fileWriter.write(stateCode + "\n");
+
+        fileWriter.write("상위 3개의 API Service ID와 각각의 요청 수\n");
+        ArrayList<String> listServiceId = new ArrayList<>(serviceId.keySet());
+        listServiceId.sort((o1, o2) -> serviceId.get(o2).compareTo(serviceId.get(o1)));
+        for(int i = 0; i < 3; i++) {
+            fileWriter.write(listServiceId.get(i) + " " +  serviceId.get(listServiceId.get(i)) + "회\n");
+        }
+
+        fileWriter.write("피크 시간대\n");
+        ArrayList<String> listTime = new ArrayList<>(Time.keySet());
+        listTime.sort((o1, o2) -> Time.get(o2).compareTo(Time.get(o1)));
+        fileWriter.write(listTime.get(0) + " " +  Time.get(listTime.get(0)) + "\n");
+
+        fileWriter.write("웹 브라우저 별 사용 비율\n");
+        fileWriter.write("피크 시간대\n");
+
+
     }
 }
