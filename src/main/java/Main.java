@@ -9,7 +9,7 @@ public class Main {
         LogAnalyze logAnalyze = new LogAnalyze();
         PrintMaxCall printMaxCall = new PrintMaxCall();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("C://input.log"))){
+        try (BufferedReader br = new BufferedReader(new FileReader("input.log"))){
             while((br.readLine()) != null){
                 logAnalyze.divide(br);
                 logAnalyze.sampleStateCode();

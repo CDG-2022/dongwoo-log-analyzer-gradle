@@ -77,7 +77,7 @@ public class LogAnalyze {
     public void PrintResult() throws IOException {
         ArrayList<String> listApiKey = new ArrayList<>(apiKey.keySet());
         listApiKey.sort((o1, o2) -> apiKey.get(o2).compareTo(apiKey.get(o1)));
-        File file = new File("C://output.log");
+        File file = new File("output.log");
         if(!file.exists()) {
             file.createNewFile();
         }
