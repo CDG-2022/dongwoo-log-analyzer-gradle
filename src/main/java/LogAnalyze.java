@@ -9,17 +9,17 @@ import static org.apache.commons.lang3.StringUtils.substringsBetween;
 
 public class LogAnalyze {
 
-    private HashMap<String, Integer> apiKey = new HashMap<>();
-    private HashMap<String, Integer> stateCode = new HashMap<>();
-    private HashMap<String, Integer> serviceId = new HashMap<>();
-    private HashMap<String, Integer> Time = new HashMap<>();
-    private HashMap<String, Integer> browser = new HashMap<>();
+    private Map<String, Integer> apiKey = new HashMap<>();
+    private Map<String, Integer> stateCode = new HashMap<>();
+    private Map<String, Integer> serviceId = new HashMap<>();
+    private Map<String, Integer> Time = new HashMap<>();
+    private Map<String, Integer> browser = new HashMap<>();
 
-    private ArrayList<String> resultApiKey = new ArrayList<>();
-    private ArrayList<String> resultStateCode = new ArrayList<>();
-    private ArrayList<String> resultServiceId = new ArrayList<>();
-    private ArrayList<String> resultTime = new ArrayList<>();
-    private ArrayList<String> resultBrowser = new ArrayList<>();
+    private List<String> resultApiKey = new ArrayList<>();
+    private List<String> resultStateCode = new ArrayList<>();
+    private List<String> resultServiceId = new ArrayList<>();
+    private List<String> resultTime = new ArrayList<>();
+    private List<String> resultBrowser = new ArrayList<>();
 
     private String [] string;
 
