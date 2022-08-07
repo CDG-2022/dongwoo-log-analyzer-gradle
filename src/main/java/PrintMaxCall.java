@@ -5,11 +5,11 @@ import java.io.IOException;
 import java.util.*;
 
 public class PrintMaxCall implements Print{
-    private LogAnalyze logAnalyze;
+    private LogAnalyzer logAnalyze;
 
     public void printMaxCall(HashMap<String, Integer> map) throws IOException {
 
-        ArrayList<String> listApiKey = new ArrayList<>(map.keySet());
+        List<String> listApiKey = new ArrayList<>(map.keySet());
         listApiKey.sort((o1, o2) -> map.get(o2).compareTo(map.get(o1)));
 
         File file = new File("C://output.log");
@@ -22,5 +22,4 @@ public class PrintMaxCall implements Print{
         fileWriter.flush();
         fileWriter.close();
     }
-
 }
