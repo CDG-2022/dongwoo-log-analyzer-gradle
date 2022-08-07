@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class PrintMaxCall implements Print{
-    private LogAnalyze logAnalyze;
+    private LogAnalyzer logAnalyze;
 
     public void printMaxCall(HashMap<String, Integer> map) throws IOException {
 
@@ -22,5 +22,4 @@ public class PrintMaxCall implements Print{
         fileWriter.flush();
         fileWriter.close();
     }
-
 }

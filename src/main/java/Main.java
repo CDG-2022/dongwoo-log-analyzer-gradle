@@ -4,24 +4,27 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Main {
+
+    private static final String OUTPUT_FILE_NAME = "input.log";
+
     public static void main(String[] args) throws IOException {
 
-        LogAnalyze logAnalyze = new LogAnalyze();
+        LogAnalyzer logAnalyzer = new LogAnalyzer();
         PrintMaxCall printMaxCall = new PrintMaxCall();
 
-        try (BufferedReader br = new BufferedReader(new FileReader("input.log"))){
+        try (BufferedReader br = new BufferedReader(new FileReader(OUTPUT_FILE_NAME))){
             while((br.readLine()) != null){
-                logAnalyze.divide(br);
-                logAnalyze.sampleStateCode();
-                logAnalyze.sampleApiKey();
-                logAnalyze.sampleServiceId();
-                logAnalyze.sampleBrowser();
-                logAnalyze.sampleTime();
+                logAnalyzer.divide(br);
+                logAnalyzer.sampleStateCode();
+                logAnalyzer.sampleApiKey();
+                logAnalyzer.sampleServiceId();
+                logAnalyzer.sampleBrowser();
+                logAnalyzer.sampleTime();
             }
         } catch (FileNotFoundException e){
             System.out.println("파일을 찾지 못했습니다");
         }
-        logAnalyze.PrintResult();
+        logAnalyzer.printResult();
 //        logAnalyze.Test();
     }
 }

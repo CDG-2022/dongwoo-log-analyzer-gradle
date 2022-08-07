@@ -7,7 +7,10 @@ import java.util.*;
 import static org.apache.commons.lang3.StringUtils.substringBetween;
 import static org.apache.commons.lang3.StringUtils.substringsBetween;
 
-public class LogAnalyze {
+public class LogAnalyzer {
+
+    private static final String OUTPUT_FILE_NAME = "output.log";
+    private static final int API_SERVICE_ID_TOP = 3;
 
     private Map<String, Integer> apiKey = new HashMap<>();
     private Map<String, Integer> stateCode = new HashMap<>();
@@ -74,8 +77,8 @@ public class LogAnalyze {
         });
     }
 
-    public void PrintResult() throws IOException {
-        File file = new File("output.log");
+    public void printResult() throws IOException {
+        File file = new File(OUTPUT_FILE_NAME);
         if(!file.exists()) {
             file.createNewFile();
         }
@@ -93,7 +96,7 @@ public class LogAnalyze {
             fileWriter.write("상위 3개의 API Service ID와 각각의 요청 수\n");
             List<String> listServiceId = new ArrayList<>(serviceId.keySet());
             listServiceId.sort((o1, o2) -> serviceId.get(o2).compareTo(serviceId.get(o1)));
-            for(int i = 0; i < 3; i++) {
+            for(int i = 0; i < API_SERVICE_ID_TOP; i++) {
                 fileWriter.write(listServiceId.get(i) + " " +  serviceId.get(listServiceId.get(i)) + "회\n\n");
                 fileWriter.flush();
             }
@@ -108,17 +111,13 @@ public class LogAnalyze {
             listBrowser.sort((o1, o2) -> browser.get(o2).compareTo(browser.get(o1)));
             int total = 0;
             for(int i = 0; i < listBrowser.size(); i++) {
-                total =+ browser.get(listBrowser.get(i));
+                total += browser.get(listBrowser.get(i));
             }
-
-            System.out.println(total);
 
             for(int i = 0; i < listBrowser.size(); i++) {
                 fileWriter.write(listBrowser.get(i) + " " + ((double)browser.get(listBrowser.get(i))/total*100 + "%\n\n"));
                 fileWriter.flush();
             }
-
-
             fileWriter.flush();
         }
     }
