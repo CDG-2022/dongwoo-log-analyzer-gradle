@@ -49,7 +49,7 @@ public class LogAnalyze {
     }
 
     public void sampleBrowser() {
-        stateCode.put(string[2], stateCode.getOrDefault(string[0], 0) + 1);
+        browser.put(string[2], browser.getOrDefault(string[2], 0) + 1);
     }
 
     public void Test() {
@@ -75,38 +75,50 @@ public class LogAnalyze {
     }
 
     public void PrintResult() throws IOException {
-        ArrayList<String> listApiKey = new ArrayList<>(apiKey.keySet());
-        listApiKey.sort((o1, o2) -> apiKey.get(o2).compareTo(apiKey.get(o1)));
         File file = new File("output.log");
         if(!file.exists()) {
             file.createNewFile();
         }
         try(FileWriter fileWriter = new FileWriter(file)){
-
+            List<String> listApiKey = new ArrayList<>(apiKey.keySet());
+            listApiKey.sort((o1, o2) -> apiKey.get(o2).compareTo(apiKey.get(o1)));
             fileWriter.write("최다호출 APIKEY\n");
-            fileWriter.write(listApiKey.get(0) + " " +  apiKey.get(listApiKey.get(0)) + "회\n");
+            fileWriter.write(listApiKey.get(0) + " " +  apiKey.get(listApiKey.get(0)) + "회\n\n");
             fileWriter.flush();
 
             fileWriter.write("상태코드 별 횟수\n");
-            fileWriter.write(stateCode + "\n");
+            fileWriter.write(stateCode + "\n\n");
             fileWriter.flush();
 
             fileWriter.write("상위 3개의 API Service ID와 각각의 요청 수\n");
-            ArrayList<String> listServiceId = new ArrayList<>(serviceId.keySet());
+            List<String> listServiceId = new ArrayList<>(serviceId.keySet());
             listServiceId.sort((o1, o2) -> serviceId.get(o2).compareTo(serviceId.get(o1)));
             for(int i = 0; i < 3; i++) {
-                fileWriter.write(listServiceId.get(i) + " " +  serviceId.get(listServiceId.get(i)) + "회\n");
+                fileWriter.write(listServiceId.get(i) + " " +  serviceId.get(listServiceId.get(i)) + "회\n\n");
                 fileWriter.flush();
-
             }
 
             fileWriter.write("피크 시간대\n");
-            ArrayList<String> listTime = new ArrayList<>(Time.keySet());
+            List<String> listTime = new ArrayList<>(Time.keySet());
             listTime.sort((o1, o2) -> Time.get(o2).compareTo(Time.get(o1)));
-            fileWriter.write(listTime.get(0) + " " +  Time.get(listTime.get(0)) + "\n");
+            fileWriter.write(listTime.get(0) + " " +  Time.get(listTime.get(0)) + "\n\n");
 
             fileWriter.write("웹 브라우저 별 사용 비율\n");
-            fileWriter.write("피크 시간대\n");
+            List<String> listBrowser = new ArrayList<>(browser.keySet());
+            listBrowser.sort((o1, o2) -> browser.get(o2).compareTo(browser.get(o1)));
+            int total = 0;
+            for(int i = 0; i < listBrowser.size(); i++) {
+                total =+ browser.get(listBrowser.get(i));
+            }
+
+            System.out.println(total);
+
+            for(int i = 0; i < listBrowser.size(); i++) {
+                fileWriter.write(listBrowser.get(i) + " " + ((double)browser.get(listBrowser.get(i))/total*100 + "%\n\n"));
+                fileWriter.flush();
+            }
+
+
             fileWriter.flush();
         }
     }
