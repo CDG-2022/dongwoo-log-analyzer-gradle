@@ -5,11 +5,13 @@ import java.io.IOException;
 
 public class Main {
 
-    private static final String OUTPUT_FILE_NAME = "input.log";
-
     public static void main(String[] args) throws IOException {
 
-        LogAnalyzer logAnalyzer = new LogAnalyzer();
+        LogFileReader logFileReader = new LogFileReader();
+        LogAnalyzer logAnalyzer = new LogAnalyzer(logFileReader);
+        logAnalyzer.start();
+/*
+        LogAnalyzercmd logAnalyzer = new LogAnalyzercmd();
         PrintMaxCall printMaxCall = new PrintMaxCall();
 
         try (BufferedReader br = new BufferedReader(new FileReader(OUTPUT_FILE_NAME))){
@@ -25,6 +27,8 @@ public class Main {
             System.out.println("파일을 찾지 못했습니다");
         }
         logAnalyzer.printResult();
-//        logAnalyze.Test();
+        logAnalyzer.Test();
+
+ */
     }
 }

@@ -11,5 +11,4 @@ public class LogMap {
     private Map<String, Integer> time = new HashMap<>();
     private Map<String, Integer> browser = new HashMap<>();
 
-
 }

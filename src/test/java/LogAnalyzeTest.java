@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 
 public class LogAnalyzeTest {
 
-    LogAnalyzer logAnalyze= new LogAnalyzer();
+    LogAnalyzercmd logAnalyze= new LogAnalyzercmd();
     @Test
     void divide() {
 
