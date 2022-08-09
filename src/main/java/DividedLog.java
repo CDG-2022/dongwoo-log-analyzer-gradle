@@ -10,5 +10,4 @@ public class DividedLog {
     private String serviceId;
     private String Time;
     private String browser;
-    private String dongwoo;
 }
