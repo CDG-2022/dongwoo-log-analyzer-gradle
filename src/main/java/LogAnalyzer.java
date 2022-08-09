@@ -10,8 +10,7 @@ public class LogAnalyzer {
 
     public void start() throws IOException {
         while(logFileReader.read() != null) {
-
-
+            
 
         }
     }
