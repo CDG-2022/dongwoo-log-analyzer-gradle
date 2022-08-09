@@ -9,6 +9,9 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
+        LogAnalyze logAnalyze = new LogAnalyze();
+        logAnalyze.start();
+/*
         LogAnalyzer logAnalyzer = new LogAnalyzer();
         PrintMaxCall printMaxCall = new PrintMaxCall();
 
@@ -25,6 +28,6 @@ public class Main {
             System.out.println("파일을 찾지 못했습니다");
         }
         logAnalyzer.printResult();
-//        logAnalyze.Test();
+*/
     }
 }
