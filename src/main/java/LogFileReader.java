@@ -4,7 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class LogFileReader {
-    private static final String OUTPUT_FILE_NAME = "output.log";
+    private static final String OUTPUT_FILE_NAME = "input.log";
     private BufferedReader br;
 
     public LogFileReader() throws FileNotFoundException {
