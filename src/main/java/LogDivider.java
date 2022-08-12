@@ -1,10 +1,13 @@
-import lombok.Data;
+import lombok.Getter;
 
-@Data
+import static org.apache.commons.lang3.StringUtils.substringsBetween;
+
 public class LogDivider {
-    private String apiKey;
-    private String stateCode;
-    private String serviceId;
-    private String Time;
-    private String browser;
+    @Getter
+    private String[] dividedResult;
+
+    public void divide(String lineOfLog) {
+        System.out.println(lineOfLog);
+        dividedResult = substringsBetween(lineOfLog, "[", "]");
+    }
 }
