@@ -7,7 +7,6 @@ public class LogDivider {
     private String[] dividedResult;
 
     public void divide(String lineOfLog) {
-        System.out.println(lineOfLog);
         dividedResult = substringsBetween(lineOfLog, "[", "]");
     }
 }
