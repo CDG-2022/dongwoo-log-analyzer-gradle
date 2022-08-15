@@ -25,6 +25,15 @@ public class LogAnalyzer {
             logDivider.divide(lineOfLog);
             logSampler.samplingLog(logMap, logDivider.getDividedResult());
         }
-        logSampler.Print();
+        MaxCallApi maxCallApi = new MaxCallApi(logMap);
+        Top3ServiceId top3ServiceId = new Top3ServiceId(logMap);
+        PeakTime peakTime = new PeakTime(logMap);
+        BrowserPercentage browserPercentage = new BrowserPercentage(logMap);
+        maxCallApi.logicOfMaxCallApi();
+        top3ServiceId.logicOfListServiceIds();
+        peakTime.logicOfPeakTime();
+        browserPercentage.logicOfBrowserPercentage();
+
+//        logSampler.Print();
     }
 }
