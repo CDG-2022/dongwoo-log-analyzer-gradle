@@ -8,6 +8,7 @@ public class LogAnalyzer {
     private String lineOfLog;
     private final LogFileReader logFileReader;
     private final LogMap logMap = new LogMap();
+    private final ResultLog resultLog = new ResultLog();
     private final LogDivider logDivider = new LogDivider();
     private final LogSampler logSampler = new LogSampler();
     private String[] dividedResult;
@@ -25,15 +26,18 @@ public class LogAnalyzer {
             logDivider.divide(lineOfLog);
             logSampler.samplingLog(logMap, logDivider.getDividedResult());
         }
-        MaxCallApi maxCallApi = new MaxCallApi(logMap);
-        Top3ServiceId top3ServiceId = new Top3ServiceId(logMap);
-        PeakTime peakTime = new PeakTime(logMap);
-        BrowserPercentage browserPercentage = new BrowserPercentage(logMap);
+        MaxCallApi maxCallApi = new MaxCallApi(logMap, resultLog);
+        StateCodePerCount stateCodePerCount = new StateCodePerCount(logMap, resultLog);
+        Top3ServiceId top3ServiceId = new Top3ServiceId(logMap, resultLog);
+        PeakTime peakTime = new PeakTime(logMap, resultLog);
+        BrowserPercentage browserPercentage = new BrowserPercentage(logMap, resultLog);
         maxCallApi.logicOfMaxCallApi();
+        stateCodePerCount.logicOfStateCodePerCount();
         top3ServiceId.logicOfListServiceIds();
         peakTime.logicOfPeakTime();
         browserPercentage.logicOfBrowserPercentage();
 
-//        logSampler.Print();
+        LogFileWriter logFileWriter = new LogFileWriter(resultLog);
+        logFileWriter.writeLog();
     }
 }
