@@ -1,16 +1,16 @@
-import lombok.Getter;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Top3ServiceId {
+
     private static final int API_SERVICE_ID_TOP = 3;
-    @Getter
     private List<String> listServiceIds;
     private LogMap logMap;
+    private ResultLog resultLog;
 
-    public Top3ServiceId(LogMap logMap) {
+    public Top3ServiceId(LogMap logMap, ResultLog resultLog) {
         this.logMap = logMap;
+        this.resultLog = resultLog;
     }
 
     public void logicOfListServiceIds() {
@@ -20,5 +20,6 @@ public class Top3ServiceId {
         for(int i = API_SERVICE_ID_TOP; i < listServiceIdsSize; i++){
             listServiceIds.remove(API_SERVICE_ID_TOP);
         }
+        resultLog.setResultServiceIds(listServiceIds);
     }
 }

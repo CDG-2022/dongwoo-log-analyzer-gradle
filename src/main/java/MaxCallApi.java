@@ -1,22 +1,23 @@
-import lombok.Getter;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 public class MaxCallApi {
 
-    @Getter
+    private static final int MAX_NUM = 0;
     private List<String> listApiKeys;
     private LogMap logMap;
+    private ResultLog resultLog;
 
-    public MaxCallApi(LogMap logMap) {
+    public MaxCallApi(LogMap logMap, ResultLog resultLog) {
         this.logMap = logMap;
+        this.resultLog = resultLog;
     }
 
     public void logicOfMaxCallApi() {
         listApiKeys = new ArrayList<>(logMap.getApiKey().keySet());
         listApiKeys.sort((o1, o2) -> logMap.getApiKey().get(o2).compareTo(logMap.getApiKey().get(o1)));
+        resultLog.setResultApiKeys(Collections.singletonList(listApiKeys.get(MAX_NUM)));
     }
 
 }
