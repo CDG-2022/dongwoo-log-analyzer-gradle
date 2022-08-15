@@ -1,9 +1,11 @@
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 
 public class LogAnalyzeTest {
 
-    LogAnalyzer logAnalyze= new LogAnalyzer();
+    LogAnalyze logAnalyze= new LogAnalyze();
     @Test
     void divide() {
 
