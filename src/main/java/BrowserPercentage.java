@@ -1,9 +1,6 @@
 import lombok.Getter;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class BrowserPercentage {
 
@@ -21,7 +18,7 @@ public class BrowserPercentage {
     public void logicOfBrowserPercentage() {
 
         listBrowserPercentages = new ArrayList<>(logMap.getBrowser().keySet());
-        listBrowserPercentages.sort((o1, o2) -> logMap.getBrowser().get(o2).compareTo(logMap.getBrowser().get(o1)));
+        Collections.sort(listBrowserPercentages);
         int total = 0;
         for(int i = 0; i < listBrowserPercentages.size(); i++) {
             total += logMap.getBrowser().get(listBrowserPercentages.get(i));
