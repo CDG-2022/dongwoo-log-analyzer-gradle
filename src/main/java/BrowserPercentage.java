@@ -4,9 +4,6 @@ import java.util.*;
 
 public class BrowserPercentage {
 
-    @Getter
-    private Map<String, Double> browserPercentage = new HashMap<>();
-    private List<String> listBrowserPercentages;
     private LogMap logMap;
     private ResultLog resultLog;
 
@@ -16,6 +13,9 @@ public class BrowserPercentage {
     }
 
     public void logicOfBrowserPercentage() {
+
+        Map<String, Double> browserPercentage = new HashMap<>();
+        List<String> listBrowserPercentages;
 
         listBrowserPercentages = new ArrayList<>(logMap.getBrowser().keySet());
         Collections.sort(listBrowserPercentages);
