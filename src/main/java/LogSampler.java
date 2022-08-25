@@ -1,8 +1,5 @@
-import lombok.Data;
-
 import static org.apache.commons.lang3.StringUtils.substringBetween;
 
-@Data
 public class LogSampler {
 
     private LogMap logMap;

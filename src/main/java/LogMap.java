@@ -1,9 +1,9 @@
-import lombok.Data;
+import lombok.Getter;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Data
+@Getter
 public class LogMap {
     private Map<String, Integer> apiKey = new HashMap<>();
     private Map<String, Integer> stateCode = new HashMap<>();

@@ -1,5 +1,3 @@
-import lombok.Getter;
-
 import java.util.*;
 
 public class BrowserPercentage {
