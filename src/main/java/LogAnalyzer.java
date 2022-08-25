@@ -1,17 +1,16 @@
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class LogAnalyzer {
 
     private String lineOfLog;
-    private final LogFileReader logFileReader;
+    private final LogFileReader logFileReader = new LogFileReader();
     private final LogMap logMap = new LogMap();
     private final ResultLog resultLog = new ResultLog();
     private final LogDivider logDivider = new LogDivider();
     private final LogSampler logSampler = new LogSampler();
-    private String[] dividedResult;
 
-    public LogAnalyzer(LogFileReader logFileReader) {
-        this.logFileReader = logFileReader;
+    public LogAnalyzer() throws FileNotFoundException {
     }
 
     public void start() throws IOException {
@@ -23,6 +22,7 @@ public class LogAnalyzer {
             logDivider.divide(lineOfLog);
             logSampler.samplingLog(logMap, logDivider.getDividedResult());
         }
+        logFileReader.LogFileCloser();
         MaxCallApi maxCallApi = new MaxCallApi(logMap, resultLog);
         StateCodePerCount stateCodePerCount = new StateCodePerCount(logMap, resultLog);
         Top3ServiceId top3ServiceId = new Top3ServiceId(logMap, resultLog);
