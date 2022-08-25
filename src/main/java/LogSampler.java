@@ -43,27 +43,4 @@ public class LogSampler {
     public void sampleBrowser() {
         logMap.getBrowser().put(dividedResult[2], logMap.getBrowser().getOrDefault(dividedResult[2], 0) + 1);
     }
-
-    public void Print() {
-        logMap.getStateCode().forEach((key, value) -> {
-            System.out.println(key + " : " + value);
-        });
-        System.out.println();
-        logMap.getApiKey().forEach((key, value) -> {
-            System.out.println(key + " : " + value);
-        });
-        System.out.println();
-        logMap.getServiceId().forEach((key, value) -> {
-            System.out.println(key + " : " + value);
-        });
-        System.out.println();
-        logMap.getBrowser().forEach((key, value) -> {
-            System.out.println(key + " : " + value);
-        });
-        System.out.println();
-        logMap.getTime().forEach((key, value) -> {
-            System.out.println(key + " : " + value);
-        });
-    }
-
 }
