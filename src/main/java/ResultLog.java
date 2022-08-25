@@ -1,3 +1,4 @@
+import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
@@ -5,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Setter
+@Setter @Getter
 public class ResultLog {
     private List<String> resultApiKeys = new ArrayList<>();
     private Map<String, Integer> resultStateCodes = new HashMap<>();
