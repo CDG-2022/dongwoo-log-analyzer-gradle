@@ -14,4 +14,8 @@ public class LogFileReader {
     public String read() throws IOException {
         return br.readLine();
     }
+
+    public void LogFileCloser() throws IOException {
+        br.close();
+    }
 }
