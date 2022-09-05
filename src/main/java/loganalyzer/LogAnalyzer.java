@@ -13,7 +13,7 @@ public class LogAnalyzer {
 
     private String lineOfLog;
     private final LogFileReader logFileReader = new LogFileReader();
-    private final LogMap logMap = new LogMap();
+    private final  LogMap logMap = new LogMap();
     private final ResultLog resultLog = new ResultLog();
     private final LogDivider logDivider = new LogDivider();
     private final LogSampler logSampler = new LogSampler();
