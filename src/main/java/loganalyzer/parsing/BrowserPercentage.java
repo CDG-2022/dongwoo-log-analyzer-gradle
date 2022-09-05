@@ -1,9 +1,14 @@
+package loganalyzer.parsing;
+
+import loganalyzer.LogMap;
+import loganalyzer.ResultLog;
+
 import java.util.*;
 
 public class BrowserPercentage {
 
-    private LogMap logMap;
-    private ResultLog resultLog;
+    private final LogMap logMap;
+    private final ResultLog resultLog;
 
     public BrowserPercentage(LogMap logMap, ResultLog resultLog) {
         this.logMap = logMap;

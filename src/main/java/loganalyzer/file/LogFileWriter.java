@@ -1,11 +1,18 @@
+package loganalyzer.file;
+
+import loganalyzer.parsing.PeakTime;
+import loganalyzer.ResultLog;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class LogFileWriter {
 
+
     private static final String OUTPUT_FILE_NAME = "output.log";
     private ResultLog resultLog;
+    private PeakTime peakTime;
 
     public LogFileWriter(ResultLog resultLog) {
         this.resultLog = resultLog;

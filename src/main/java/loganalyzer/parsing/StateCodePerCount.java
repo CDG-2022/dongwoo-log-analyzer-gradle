@@ -1,3 +1,8 @@
+package loganalyzer.parsing;
+
+import loganalyzer.LogMap;
+import loganalyzer.ResultLog;
+
 public class StateCodePerCount {
 
     private LogMap logMap;

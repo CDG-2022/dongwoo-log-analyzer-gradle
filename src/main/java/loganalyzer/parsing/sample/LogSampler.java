@@ -1,3 +1,7 @@
+package loganalyzer.parsing.sample;
+
+import loganalyzer.LogMap;
+
 import static org.apache.commons.lang3.StringUtils.substringBetween;
 
 public class LogSampler {

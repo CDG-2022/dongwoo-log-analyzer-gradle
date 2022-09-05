@@ -1,3 +1,5 @@
+package loganalyzer.parsing.sample;
+
 import lombok.Getter;
 
 import static org.apache.commons.lang3.StringUtils.substringsBetween;

@@ -1,3 +1,7 @@
+package loganalyzer;
+
+import loganalyzer.LogAnalyzer;
+
 import java.io.IOException;
 
 public class Main {

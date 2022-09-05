@@ -1,3 +1,11 @@
+package loganalyzer;
+
+import loganalyzer.file.LogFileReader;
+import loganalyzer.file.LogFileWriter;
+import loganalyzer.parsing.*;
+import loganalyzer.parsing.sample.LogDivider;
+import loganalyzer.parsing.sample.LogSampler;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 

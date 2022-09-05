@@ -1,3 +1,8 @@
+package loganalyzer.parsing;
+
+import loganalyzer.LogMap;
+import loganalyzer.ResultLog;
+
 import java.util.ArrayList;
 import java.util.List;
 
