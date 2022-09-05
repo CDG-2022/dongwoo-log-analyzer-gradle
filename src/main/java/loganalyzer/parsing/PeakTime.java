@@ -12,8 +12,8 @@ public class PeakTime {
     private static final int MAX_NUM = 0;
     private String peakTime;
     private List<String> listPeakTimes;
-    private LogMap logMap;
-    private ResultLog resultLog;
+    private final LogMap logMap;
+    private final ResultLog resultLog;
 
     public PeakTime(LogMap logMap, ResultLog resultLog) {
         this.logMap = logMap;

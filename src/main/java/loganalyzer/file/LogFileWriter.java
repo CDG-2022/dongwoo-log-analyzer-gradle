@@ -11,8 +11,7 @@ public class LogFileWriter {
 
 
     private static final String OUTPUT_FILE_NAME = "output.log";
-    private ResultLog resultLog;
-    private PeakTime peakTime;
+    private final ResultLog resultLog;
 
     public LogFileWriter(ResultLog resultLog) {
         this.resultLog = resultLog;

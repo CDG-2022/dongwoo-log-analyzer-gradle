@@ -10,8 +10,8 @@ public class Top3ServiceId {
 
     private static final int API_SERVICE_ID_TOP = 3;
     private List<String> listServiceIds;
-    private LogMap logMap;
-    private ResultLog resultLog;
+    private final LogMap logMap;
+    private final ResultLog resultLog;
 
     public Top3ServiceId(LogMap logMap, ResultLog resultLog) {
         this.logMap = logMap;

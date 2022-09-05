@@ -11,8 +11,8 @@ public class MaxCallApi {
 
     private static final int MAX_NUM = 0;
     private List<String> listApiKeys;
-    private LogMap logMap;
-    private ResultLog resultLog;
+    private final LogMap logMap;
+    private final ResultLog resultLog;
 
     public MaxCallApi(LogMap logMap, ResultLog resultLog) {
         this.logMap = logMap;
