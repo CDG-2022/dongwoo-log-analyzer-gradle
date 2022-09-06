@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class LogFileReader {
+public class LogFileReader implements AutoCloseable{
     private static final String OUTPUT_FILE_NAME = "input.log";
     private final BufferedReader br;
 
@@ -17,7 +17,8 @@ public class LogFileReader {
         return br.readLine();
     }
 
-    public void LogFileCloser() throws IOException {
+    @Override
+    public void close() throws Exception {
         br.close();
     }
 }

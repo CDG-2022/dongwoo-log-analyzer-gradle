@@ -21,7 +21,7 @@ public class LogAnalyzer {
     public LogAnalyzer() throws FileNotFoundException {
     }
 
-    public void start() throws IOException {
+    public void start() throws Exception {
         while(true) {
             lineOfLog = logFileReader.read();
             if(lineOfLog == null) {
@@ -30,7 +30,7 @@ public class LogAnalyzer {
             logDivider.divide(lineOfLog);
             logSampler.samplingLog(logMap, logDivider.getDividedResult());
         }
-        logFileReader.LogFileCloser();
+        logFileReader.close();
         MaxCallApi maxCallApi = new MaxCallApi(logMap, resultLog);
         StateCodePerCount stateCodePerCount = new StateCodePerCount(logMap, resultLog);
         Top3ServiceId top3ServiceId = new Top3ServiceId(logMap, resultLog);
