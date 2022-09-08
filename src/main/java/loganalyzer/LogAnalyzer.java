@@ -22,15 +22,17 @@ public class LogAnalyzer {
     }
 
     public void start() throws Exception {
-        while(true) {
-            lineOfLog = logFileReader.read();
-            if(lineOfLog == null) {
-                break;
+
+        try(final LogFileReader logFileReader = new LogFileReader()) {
+            while(true) {
+                lineOfLog = logFileReader.read();
+                if(lineOfLog == null) {
+                    break;
+                }
+                logDivider.divide(lineOfLog);
+                logSampler.samplingLog(logMap, logDivider.getDividedResult());
             }
-            logDivider.divide(lineOfLog);
-            logSampler.samplingLog(logMap, logDivider.getDividedResult());
         }
-        logFileReader.close();
         MaxCallApi maxCallApi = new MaxCallApi(logMap, resultLog);
         StateCodePerCount stateCodePerCount = new StateCodePerCount(logMap, resultLog);
         Top3ServiceId top3ServiceId = new Top3ServiceId(logMap, resultLog);
