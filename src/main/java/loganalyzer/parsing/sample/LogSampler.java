@@ -8,12 +8,11 @@ public class LogSampler {
 
     private LogMap logMap;
 
-    private static final int FIRST_PART = 0;
-    private static final int SECOND_PART = 1;
-    private static final int THIRD_PART = 2;
-    private static final int FOURTH_PART = 3;
-
-
+    private static final int INDEX_STATE_CODE = 0;
+    private static final int INDEX_URL = 1;
+    private static final int INDEX_BROWSER = 2;
+    private static final int INDEX_DATE = 3;
+    
     public void samplingLog(LogMap logMap, String[] dividedResult) {
         this.logMap = logMap;
         sampleApiKey(dividedResult);
@@ -24,26 +23,26 @@ public class LogSampler {
     }
 
     public void sampleApiKey(String[] dividedResult) {
-        String sampledApiKey = substringBetween(dividedResult[SECOND_PART], "apikey=", "&");
+        String sampledApiKey = substringBetween(dividedResult[INDEX_URL], "apikey=", "&");
         logMap.getApiKey().put(sampledApiKey, logMap.getApiKey().getOrDefault(sampledApiKey, 0) + 1);
     }
 
     public void sampleStateCode(String[] dividedResult) {
-        logMap.getStateCode().put(dividedResult[FIRST_PART],
-                logMap.getStateCode().getOrDefault(dividedResult[FIRST_PART], 0) + 1);
+        logMap.getStateCode().put(dividedResult[INDEX_STATE_CODE],
+                logMap.getStateCode().getOrDefault(dividedResult[INDEX_STATE_CODE], 0) + 1);
     }
 
     public void sampleServiceId(String[] dividedResult) {
-        String sampledServiceId = substringBetween(dividedResult[SECOND_PART], "search/", "?");
+        String sampledServiceId = substringBetween(dividedResult[INDEX_URL], "search/", "?");
         logMap.getServiceId().put(sampledServiceId, logMap.getServiceId().getOrDefault(sampledServiceId, 0) + 1);
     }
 
     public void sampleTime(String[] dividedResult) {
-        logMap.getTime().put(dividedResult[FOURTH_PART].substring(0, dividedResult[FOURTH_PART].length()-3),
-                logMap.getTime().getOrDefault(dividedResult[FOURTH_PART].substring(0, dividedResult[FOURTH_PART].length()-3), 0) + 1);
+        logMap.getTime().put(dividedResult[INDEX_DATE].substring(0, dividedResult[INDEX_DATE].length()-3),
+                logMap.getTime().getOrDefault(dividedResult[INDEX_DATE].substring(0, dividedResult[INDEX_DATE].length()-3), 0) + 1);
     }
 
     public void sampleBrowser(String[] dividedResult) {
-        logMap.getBrowser().put(dividedResult[THIRD_PART], logMap.getBrowser().getOrDefault(dividedResult[THIRD_PART], 0) + 1);
+        logMap.getBrowser().put(dividedResult[INDEX_BROWSER], logMap.getBrowser().getOrDefault(dividedResult[INDEX_BROWSER], 0) + 1);
     }
 }
